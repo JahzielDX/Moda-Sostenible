@@ -5,14 +5,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Moda Sostenible — Emprendimientos</title>
-  <meta name="description" content="Plataforma para emprendimientos de moda sostenible. Diseño natural, limpio y responsivo." />  <style>
-    /* ---- Paleta de colores (exclusiva) ---- */
+  <meta name="description" content="Plataforma para emprendimientos de moda sostenible. Diseño natural, limpio y responsivo." />
+
+  <style>
+    /* ---- PALETA DE COLORES ---- */
     :root{
-      --beige: #E8DCC4; /* beige base */
-      --green-light: #CFE8D6; /* verde claro */
-      --green-medium: #7FB285; /* verde medio */
-      --green-dark: #2F6F4E; /* verde oscuro */
-      --brown-earth: #6B4F35; /* marrón tierra */
+      --beige: #E8DCC4;
+      --green-light: #CFE8D6;
+      --green-medium: #7FB285;
+      --green-dark: #2F6F4E;
+      --brown-earth: #6B4F35;
 
       --radius: 14px;
       --soft-shadow: 0 6px 18px rgba(47,111,78,0.08);
@@ -22,22 +24,19 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
 
-    /* ---- Reset y base ---- */
+    /* ---- RESET ---- */
     *{box-sizing:border-box}
     html,body{height:100%;}
     body{
       margin:0;
       background:var(--beige);
       color:var(--green-dark);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
-      font-weight:300; /* tipografía delgada y elegante */
-      padding-top:72px; /* espacio para header fijo */
-      letter-spacing:0.2px;
+      font-weight:300;
+      padding-top:72px;
     }
 
-    /* Sutil textura tipo papel reciclado usando gradientes (sin imágenes externas) */
+    /* Textura tipo papel */
     .paper-texture{
       background-color:var(--beige);
       background-image:
@@ -47,7 +46,7 @@
       background-blend-mode: overlay, overlay, normal;
     }
 
-    /* ---- HEADER (fijo) ---- */
+    /* ---- HEADER ---- */
     header{
       position:fixed;
       top:0;left:0;right:0;
@@ -59,75 +58,72 @@
       background:linear-gradient(180deg,var(--beige), color-mix(in srgb, var(--beige) 90%, var(--green-medium) 10%));
       box-shadow:var(--soft-shadow);
       z-index:1000;
-      border-bottom:1px solid rgba(47,111,78,0.06);
-      backdrop-filter: blur(4px);
     }
 
-    /* Logo minimalista */
     .logo{
       display:flex;align-items:center;gap:0.6rem;
       color:var(--green-dark);
       text-decoration:none;
       font-weight:600;font-size:1.05rem;
     }
-    .logo svg{width:36px;height:36px;flex-shrink:0}
+    .logo svg{width:36px;height:36px}
 
-    /* Nav - mobile first (hamburger) */
+    /* ---- NAV ---- */
     .nav-toggle{display:flex;align-items:center}
     .nav-toggle button{
-      appearance:none;border:0;background:transparent;padding:8px;border-radius:10px;cursor:pointer
+      border:0;background:transparent;padding:8px;border-radius:10px;cursor:pointer
     }
-    .nav-toggle svg{width:22px;height:22px;display:block}
+    .nav-toggle svg{width:22px;height:22px}
 
     nav.main-nav{
-      position:fixed; /* mobile overlay */
+      position:fixed;
       inset:72px 0 0 0;
-      background:linear-gradient(180deg, rgba(255,255,255,0.97), rgba(255,255,255,0.99));
-      transform:translateY(-8px) scaleY(0.96);
+      background:rgba(255,255,255,0.96);
+      transform:translateY(-10px);
       opacity:0;pointer-events:none;
       transition:all .28s ease;
-      border-top:1px solid rgba(47,111,78,0.04);
       padding:1rem;
     }
     nav.main-nav.open{opacity:1;pointer-events:auto;transform:none}
     nav.main-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.6rem}
-    nav.main-nav a{display:block;padding:.8rem 1rem;border-radius:10px;text-decoration:none;color:var(--green-dark);font-weight:500}
+    nav.main-nav a{padding:.8rem 1rem;border-radius:10px;text-decoration:none;color:var(--green-dark);font-weight:500}
     nav.main-nav a:hover{background:var(--green-light)}
 
-    /* Desktop nav overrides */
+    /* Desktop */
     @media (min-width:840px){
       .nav-toggle{display:none}
-      nav.main-nav{position:static;transform:none;opacity:1;background:transparent;padding:0}
+      nav.main-nav{
+        position:static;transform:none;opacity:1;background:transparent;padding:0;pointer-events:auto;
+      }
       nav.main-nav ul{flex-direction:row;gap:1.2rem}
       nav.main-nav a{padding:0}
     }
 
-    /* ---- HERO (Sección de inicio) ---- */
+    /* ---- HERO ---- */
     .hero{
       min-height:62vh;
       display:flex;align-items:center;justify-content:center;
       text-align:center;padding:3.2rem 1rem;
     }
-    .hero .inner{max-width:980px}
+    .hero .inner{
+      max-width:980px;
+      background:linear-gradient(180deg, transparent, rgba(207,232,214,0.12));
+      padding:2rem;
+      border-radius:18px;
+      box-shadow:var(--card-shadow);
+    }
     .hero h1{
       margin:0 0 1.2rem;
       font-size:clamp(1.4rem,4.6vw,2.8rem);
-      color:var(--green-dark);
-      font-weight:600;line-height:1.05;
+      color:var(--green-dark);font-weight:600;
     }
     .hero p.lead{margin:0 auto 1.6rem;max-width:720px;color:rgba(47,111,78,0.9);font-weight:400}
 
     .btn-primary{
-      display:inline-block;padding:.85rem 1.2rem;border-radius:12px;border:2px solid var(--green-medium);
-      background:linear-gradient(180deg, rgba(127,178,133,0.08), rgba(207,232,214,0.06));
-      color:var(--green-dark);text-decoration:none;font-weight:600;backdrop-filter: blur(2px);
-      box-shadow: 0 8px 18px rgba(47,111,78,0.06);
-    }
-
-    /* Sombra / degradado verde claro ligero en hero */
-    .hero .inner{
-      background:linear-gradient(180deg, transparent 0%, rgba(207,232,214,0.12) 100%);
-      padding:2rem; border-radius:18px; box-shadow:var(--card-shadow);
+      display:inline-block;padding:.85rem 1.2rem;border-radius:12px;
+      border:2px solid var(--green-medium);
+      background:rgba(127,178,133,0.15);
+      color:var(--green-dark);text-decoration:none;font-weight:600;
     }
 
     /* ---- SECCIÓN EMPRENDIMIENTOS ---- */
@@ -143,236 +139,233 @@
       border-radius:12px;padding:1rem;border:1px solid rgba(47,111,78,0.06);
       box-shadow:var(--card-shadow);display:flex;gap:0.9rem;align-items:flex-start
     }
-    .card .thumb{
-      width:84px;height:84px;border-radius:10px;flex-shrink:0;overflow:hidden;border:3px solid var(--green-dark);display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--green-light), rgba(255,255,255,0.4))
+    .thumb{
+      width:84px;height:84px;border-radius:10px;overflow:hidden;
+      border:3px solid var(--green-dark);
+      display:flex;align-items:center;justify-content:center;
+      background:var(--green-light)
     }
     .card h3{margin:0;font-size:1rem;color:var(--brown-earth);font-weight:700}
     .card p{margin:0.45rem 0 0;color:rgba(47,111,78,0.85);font-size:0.92rem}
-    .card .social{margin-left:auto;display:flex;flex-direction:column;gap:.4rem}
-    .card .social a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;border:1px solid rgba(47,111,78,0.06);text-decoration:none}
 
-    /* Responsive columns for cards */
-    @media (min-width:520px){
-      .cards-grid{grid-template-columns: repeat(3,1fr)}
-    }
-    @media (min-width:880px){
-      .cards-grid{grid-template-columns: repeat(4,1fr)}
-    }
+    .social{margin-left:auto;display:flex;flex-direction:column;gap:.4rem}
+    .social a{width:36px;height:36px;border-radius:8px;border:1px solid rgba(47,111,78,0.06);display:flex;align-items:center;justify-content:center;text-decoration:none}
 
-    /* ---- Misión y Visión ---- */
+    @media (min-width:520px){.cards-grid{grid-template-columns:repeat(3,1fr)}}
+    @media (min-width:880px){.cards-grid{grid-template-columns:repeat(4,1fr)}}
+
+    /* ---- MISION & VISION ---- */
     .mission-vision{
       background:var(--green-light);padding:2.6rem 1rem;border-radius:18px;margin:1.2rem auto;max-width:1100px
     }
     .mv-grid{display:grid;grid-template-columns:1fr;gap:1rem}
-    .mv-card{padding:1.2rem;border-radius:12px;background:transparent;text-align:center}
-    .mv-card h4{color:var(--brown-earth);margin:0 0 .6rem}
-    .mv-card p{color:var(--green-dark);margin:0;font-weight:400}
     @media(min-width:880px){.mv-grid{grid-template-columns:1fr 1fr}}
+    .mv-card{text-align:center;padding:1.2rem}
+    .mv-card h4{margin:0;color:var(--brown-earth)}
+    .mv-card p{margin:0;color:var(--green-dark)}
 
     /* ---- FOOTER ---- */
     footer{
-      margin-top:2.2rem;padding:2rem 1rem;background:linear-gradient(180deg,var(--brown-earth),var(--green-dark));color:var(--beige);text-align:center
+      margin-top:2.2rem;padding:2rem 1rem;
+      background:linear-gradient(180deg,var(--brown-earth),var(--green-dark));
+      color:var(--beige);text-align:center
     }
     footer nav{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
     footer a{color:var(--beige);text-decoration:none}
     .social-footer{display:flex;gap:.8rem;justify-content:center}
-    .social-footer a{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.06);display:inline-flex;align-items:center;justify-content:center}
+    .social-footer a{
+      width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.06);
+      display:flex;align-items:center;justify-content:center;
+      color:white;text-decoration:none;
+    }
+  </style>
+</head>
 
-    /* Spacing helpers */
-    .container{max-width:1200px;margin:0 auto}
+<body class="paper-texture">
 
-    /* Utilities */
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-  </style></head>
-<body class="paper-texture">  <header>
+  <!-- HEADER -->
+  <header>
     <a class="logo" href="#">
-      <!-- Logo minimalista: hoja + hilo (SVG) -->
-      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-        <defs>
-          <linearGradient id="g" x1="0" x2="1">
-            <stop offset="0" stop-color="#7FB285" />
-            <stop offset="1" stop-color="#2F6F4E" />
-          </linearGradient>
-        </defs>
+      <svg viewBox="0 0 64 64">
+        <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#7FB285"/><stop offset="1" stop-color="#2F6F4E"/></linearGradient></defs>
         <path d="M38 8c-8 2-20 10-22 22 10 4 20-6 24-12 6-8 4-12-2-10z" fill="url(#g)" />
-        <path d="M18 46c6-2 22-10 32-28" fill="none" stroke="#6B4F35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18 46c6-2 22-10 32-28" fill="none" stroke="#6B4F35" stroke-width="2" stroke-linecap="round"/>
       </svg>
       Moda Sostenible
-    </a><div class="nav-toggle">
-  <nav class="main-nav" id="mainNav" aria-label="Menú principal">
-    <ul>
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#emprendimientos">Emprendimientos</a></li>
-      <li><a href="#mision">Misión</a></li>
-      <li><a href="#vision">Visión</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-  <button id="navBtn" aria-expanded="false" aria-controls="mainNav" title="Abrir menú">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-    <span class="sr-only">Abrir menú</span>
-  </button>
-</div>
+    </a>
 
-  </header>  <!-- HERO -->  <main>
+    <div class="nav-toggle">
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#emprendimientos">Emprendimientos</a></li>
+          <li><a href="#mision">Misión</a></li>
+          <li><a href="#vision">Visión</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button id="navBtn" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
     <section id="inicio" class="hero">
       <div class="inner container">
         <h1>“La moda cambia vidas cuando se crea con propósito.”</h1>
         <p class="lead">Explora emprendimientos que priorizan materiales regenerativos, procesos éticos y un impacto positivo en las comunidades.</p>
         <a class="btn-primary" href="#emprendimientos">Explorar Emprendimientos</a>
       </div>
-    </section><!-- EMPRENDIMIENTOS -->
-<section id="emprendimientos" class="section">
-  <div class="container">
-    <h2 style="margin:0 0 1rem;color:var(--brown-earth);font-weight:700">Emprendimientos</h2>
+    </section>
 
-    <div class="cards-grid" role="list">
-      <!-- Card 1 -->
-      <article class="card" role="listitem">
-        <div class="thumb" aria-hidden="true">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M12 2s4 4 0 9c-4 5-6 6-6 6s-1-6 6-15z" fill="#7FB285"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Variedades MS</h3>
-          <p>Decoraciones de maderas!</p>
-        </div>
-        <div class="social">
-          <a href="https://www.instagram.com/ms.variedades0?igsh=NHI5Z3E1eHQyZ3Nm" aria-label="Instagram de Variedades MS" target="_blank" rel="noopener">📷</a>
-        </div>
-      </article>
+    <!-- EMPRENDIMIENTOS -->
+    <section id="emprendimientos" class="section">
+      <div class="container">
+        <h2 style="margin:0 0 1rem;color:var(--brown-earth);font-weight:700">Emprendimientos</h2>
 
-      <!-- Card 2 -->
-      <article class="card" role="listitem">
-        <div class="thumb">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="3" width="18" height="18" rx="3" fill="#CFE8D6" stroke="#2F6F4E" />
-          </svg>
-        </div>
-        <div>
-          <h3>CRAM Eco Bag</h3>
-          <p>Tulas con residuos de telas!</p>
-        </div>
-        <div class="social">
-          <a href="https://www.instagram.com/cram.ecobag?igsh=MWxiNHhhc3ZvbW5jag==" aria-label="Instagram de CRAM Eco Bag" target="_blank" rel="noopener">📷</a>
-        </div>
-      </article>
+        <div class="cards-grid">
 
-      <!-- Card 3 -->
-      <article class="card" role="listitem">
-        <div class="thumb">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="9" fill="#E8DCC4" stroke="#2F6F4E" />
-          </svg>
-        </div>
-        <div>
-          <h3>Mochilas Kankuama</h3>
-          <p>Mochilas con lana de oveja!</p>
-        </div>
-        <div class="social">
-          <a href="https://www.instagram.com/leonorp.0712?igsh=OHc5NW9zeGR5ZzBu" aria-label="Instagram de Mochilas Kankuama" target="_blank" rel="noopener">📷</a>
-        </div>
-      </article>
+          <!-- CARD 1 -->
+          <article class="card">
+            <div class="thumb">
+              <svg width="56" height="56"><path d="M12 2s4 4 0 9c-4 5-6 6-6 6s-1-6 6-15z" fill="#7FB285"/></svg>
+            </div>
+            <div>
+              <h3>Variedades MS</h3>
+              <p>Decoraciones de madera!</p>
+            </div>
+            <div class="social">
+              <a href="https://www.instagram.com/ms.variedades0?igsh=NHI5Z3E1eHQyZ3Nm" target="_blank">📷</a>
+            </div>
+          </article>
 
-      <!-- Card 4 -->
-      <article class="card" role="listitem">
-        <div class="thumb">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="9" fill="#E8DCC4" stroke="#2F6F4E" />
-          </svg>
-        </div>
-        <div>
-          <h3>Tulitu</h3>
-          <p>Hechas con material reutilizado!</p>
-        </div>
-        <div class="social">
-          <a href="https://www.instagram.com/tulituecobags?igsh=MTJzOWV1djMxZjVmOQ==" aria-label="Instagram de Tulitu" target="_blank" rel="noopener">📷</a>
-        </div>
-      </article>
+          <!-- CARD 2 -->
+          <article class="card">
+            <div class="thumb">
+              <svg width="56" height="56"><rect x="3" y="3" width="18" height="18" rx="3" fill="#CFE8D6" stroke="#2F6F4E"/></svg>
+            </div>
+            <div>
+              <h3>CRAM Eco Bag</h3>
+              <p>Tulas hechas con residuos de telas!</p>
+            </div>
+            <div class="social">
+              <a href="https://www.instagram.com/cram.ecobag?igsh=MWxiNHhhc3ZvbW5jag==" target="_blank">📷</a>
+            </div>
+          </article>
 
-      <!-- Card 5 -->
-      <article class="card" role="listitem">
-        <div class="thumb">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="9" fill="#E8DCC4" stroke="#2F6F4E" />
-          </svg>
-        </div>
-        <div>
-          <h3>Pachas</h3>
-          <p>Botellas, plásticos, cartones reutilizados!</p>
-        </div>
-        <div class="social">
-          <a href="https://www.instagram.com/pachas.co?igsh=MWxwMHZub2E1amZwMw==" aria-label="Instagram de Pachas" target="_blank" rel="noopener">📷</a>
-        </div>
-      </article>
-    </div>
+          <!-- CARD 3 -->
+          <article class="card">
+            <div class="thumb">
+              <svg width="56" height="56"><circle cx="12" cy="12" r="9" fill="#E8DCC4" stroke="#2F6F4E"/></svg>
+            </div>
+            <div>
+              <h3>Mochilas Kankuama</h3>
+              <p>Mochilas con lana de oveja!</p>
+            </div>
+            <div class="social">
+              <a href="https://www.instagram.com/leonorp.0712?igsh=OHc5NW9zeGR5ZzBu" target="_blank">📷</a>
+            </div>
+          </article>
 
-  </div> 
-</section>
+          <!-- CARD 4 -->
+          <article class="card">
+            <div class="thumb">
+              <svg width="56" height="56"><circle cx="12" cy="12" r="9" fill="#E8DCC4" stroke="#2F6F4E"/></svg>
+            </div>
+            <div>
+              <h3>Tulitu</h3>
+              <p>Tulas con material reutilizado!</p>
+            </div>
+            <div class="social">
+              <a href="https://www.instagram.com/tulituecobags?igsh=MTJzOWV1djMxZjVmOQ==" target="_blank">📷</a>
+            </div>
+          </article>
 
-<!-- MISION Y VISION -->
-<section id="mision" class="section">
-  <div class="mission-vision container">
-    <div class="mv-grid">
-      <div id="mision">
-        <div class="mv-card">
-          <h4>Misión</h4>
-          <p>Impulsar emprendimientos de moda responsable que generen empleo digno, reduzcan residuos y promuevan prácticas regenerativas en cada etapa del ciclo productivo.</p>
+          <!-- CARD 5 -->
+          <article class="card">
+            <div class="thumb">
+              <svg width="56" height="56"><circle cx="12" cy="12" r="9" fill="#E8DCC4" stroke="#2F6F4E"/></svg>
+            </div>
+            <div>
+              <h3>Pachas</h3>
+              <p>Botellas, plásticos y cartones reutilizados!</p>
+            </div>
+            <div class="social">
+              <a href="https://www.instagram.com/pachas.co?igsh=MWxwMHZub2E1amZwMw==" target="_blank">📷</a>
+            </div>
+          </article>
+
         </div>
       </div>
+    </section>
 
-      <div id="vision">
-        <div class="mv-card">
-          <h4>Visión</h4>
-          <p>Ser la plataforma de referencia en la región para encontrar y escalar marcas de moda sostenible, fomentando un mercado justo y consciente hacia 2030.</p>
+    <!-- MISION & VISION -->
+    <section id="mision" class="section">
+      <div class="mission-vision container">
+        <div class="mv-grid">
+
+          <div class="mv-card">
+            <h4>Misión</h4>
+            <p>Impulsar emprendimientos de moda responsable que generen empleo digno, reduzcan residuos y promuevan prácticas regenerativas.</p>
+          </div>
+
+          <div class="mv-card" id="vision">
+            <h4>Visión</h4>
+            <p>Ser la plataforma de referencia en moda sostenible, fomentando un mercado justo y consciente hacia 2030.</p>
+          </div>
+
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- CONTACTO (ancla) simple placeholder -->
-<section id="contacto" class="section">
-  <div class="container" style="text-align:center;max-width:780px">
-    <h2 style="color:var(--brown-earth);">Contacto</h2>
-    <p style="color:var(--green-dark);">¿Quieres que tu emprendimiento aparezca aquí? Escríbenos a <strong>jahziel1048@gmail.com</strong> o envíanos un mensaje por WhatsApp.</p>
-  </div>
-</section>
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+      <div class="container" style="text-align:center;max-width:780px">
+        <h2 style="color:var(--brown-earth);">Contacto</h2>
+        <p style="color:var(--green-dark);">
+          ¿Quieres que tu emprendimiento aparezca aquí? Escríbenos a
+          <strong>jahziel1048@gmail.com</strong>
+          o envíanos un mensaje por WhatsApp.
+        </p>
+      </div>
+    </section>
+  </main>
 
-  </main>  <!-- FOOTER -->  <footer>
-    <nav aria-label="Pie de página">
-      <a href="#">Sobre nosotros</a>
+  <!-- FOOTER COMPLETO -->
+  <footer>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#emprendimientos">Emprendimientos</a>
+      <a href="#mision">Misión</a>
+      <a href="#vision">Visión</a>
       <a href="#contacto">Contacto</a>
-      <a href="#">Políticas de privacidad</a>
-      <a href="#">Términos y condiciones</a>
-    </nav><div class="social-footer" aria-hidden>
-  <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect width="20" height="20" x="2" y="2" rx="5" stroke="currentColor"/></svg></a>
-  <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 8h2v-3h-2c-1.1 0-2 .9-2 2v1h-1v3h1v7h3v-7h1.5l.5-3h-2z" stroke="currentColor"/></svg></a>
-  <a href="#" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 1 0-9 9c.9 0 1.8-.1 2.6-.4L21 21v-9z" stroke="currentColor"/></svg></a>
-</div>
+    </nav>
 
-<p style="margin-top:1rem;opacity:0.9;font-size:0.92rem">&copy; <span id="year"></span> Moda Sostenible — Todos los derechos reservados</p>
+    <div class="social-footer">
+      <a href="https://www.instagram.com" target="_blank">📷</a>
+      <a href="https://www.facebook.com" target="_blank">📘</a>
+      <a href="https://www.tiktok.com" target="_blank">🎵</a>
+    </div>
 
-  </footer>  <script>
-    // Mobile nav toggle
-    const btn = document.getElementById('navBtn');
-    const nav = document.getElementById('mainNav');
-    const year = document.getElementById('year');
-    year.textContent = new Date().getFullYear();
+    <p style="margin-top:1rem;font-size:0.85rem;opacity:0.8">
+      © 2025 Moda Sostenible — Todos los derechos reservados.
+    </p>
+  </footer>
 
-    btn.addEventListener('click', ()=>{
-      const open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open);
+  <!-- JS DEL MENÚ -->
+  <script>
+    const navBtn = document.getElementById("navBtn");
+    const mainNav = document.getElementById("mainNav");
+
+    navBtn.addEventListener("click", () => {
+      const expanded = navBtn.getAttribute("aria-expanded") === "true";
+      navBtn.setAttribute("aria-expanded", !expanded);
+      mainNav.classList.toggle("open");
     });
+  </script>
 
-    // Ensure smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',(e)=>{
-        const target = document.querySelector(a.getAttribute('href'));
-        if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
-      });
-    });
-  </script></body>
+</body>
 </html>
